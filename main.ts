@@ -17,5 +17,8 @@ const runner = await import(`./solutions/d${day}.ts`);
 
 if (runner['parser']) input = runner.parser(input);
 
+const start = performance.now();
 const output = part === 1 ? await runner.p1(input) : await runner.p2(input);
-console.log(output);
+const end = performance.now();
+
+console.log(output, `in ${(end - start).toFixed(2)} ms`);
