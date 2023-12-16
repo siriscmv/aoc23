@@ -8,6 +8,16 @@ const args = Deno.args;
 const day = pad(args[0]);
 const part = parseInt(args[1]);
 
+if (!day || !part) {
+	console.log('Usage: deno run main.ts <day> <part>');
+	Deno.exit(1);
+}
+
+if (part !== 1 && part !== 2) {
+	console.log('Part must be 1 or 2');
+	Deno.exit(1);
+}
+
 const data = await Deno.readFile(`./inputs/d${day}.txt`);
 let input: string[] = new TextDecoder()
 	.decode(data)
